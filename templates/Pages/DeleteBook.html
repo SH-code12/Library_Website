@@ -1,0 +1,92 @@
+﻿<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete Book From BiblioBliss</title>
+
+</head>
+<body>
+
+    {% include "navAdmin.html" %}
+
+    
+    <div style="margin-top: 80px; text-align: center;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Delete a Book:</h1>
+    </div>
+
+
+    <div class="book-container" style="margin-top: 20px;">
+        {% for book in bookes %}
+            <div class="book">
+                <img src="{{ book.image.url }}" alt="{{ book.name }}" class="book-image">
+                <h3>ID: {{book.id}}</h3>
+                <h3>Name: {{ book.name }}</h3>
+                <button data-book-id="{{ book.id }}" class="delete-button" style="background-color:rgb(162, 202, 202);border-radius: 20px;width: 80px;height: 30px;">
+                    Delete
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    
+
+
+
+    {% comment %} This line of code includes the jQuery library in your HTML document. 
+    jQuery is a fast, small, and feature-rich JavaScript library that simplifies various tasks such as HTML document traversal and manipulation,
+    event handling, animation, and AJAX interaction.
+
+    Including this script tag in your HTML document allows you to use jQuery syntax and functions in your JavaScript code.
+    In the context of your AJAX code for returning books, 
+    jQuery is used to handle DOM manipulation, 
+    event binding, 
+    and making AJAX requests in a more concise and cross-browser compatible manner. {% endcomment %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.delete-button').click(function() {
+                var bookId = $(this).data('book-id');
+                var csrftoken = getCookie('csrftoken'); // Get CSRF token from cookies
+    
+                $.ajax({
+                    url: '/DeleteBooks/',
+                    method: 'POST',
+                    data: {
+                        'book_id': bookId,
+                        csrfmiddlewaretoken: csrftoken // Include CSRF token in data
+                    },
+                    success: function(response) {
+                        alert('Book Deleted successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error deleting book:', error);
+                        alert('Error deleting book. Please try again.');
+                    }
+                });
+            });
+        });
+    
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Extract CSRF token from cookies
+                    if (cookie.startsWith('csrftoken=')) {
+                        cookieValue = cookie.substring('csrftoken='.length, cookie.length);
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+    
+
+</body>
+</html>

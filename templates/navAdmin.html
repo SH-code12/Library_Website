@@ -1,0 +1,45 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+<nav >
+    <div style="height: 80px;"><img src="{% static "Images/Flogo.jpg" %}" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+    <a href="{% url "EditBooks" %}"  title="Select and Edit a book">
+        <button id="nav" style=" right:1%;top:3%; width: 150px; height: 30px;"> 
+            <b>Edit Books</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "DeleteBooks" %}"  title="Delete a book">
+        <button id="nav" style=" right:16%;top:3%; width: 150px; height: 30px;"> 
+            <b>Delete a Book</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "ShowBooks" %}"  title="show details of available books">
+        <button id="nav" style=" right:32%;top:3%; width: 200px; height: 30px;"> 
+            <b>Show Details of Books</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "AddBooks" %}"  title="Add a Book">
+        <button id="nav" style=" right:51%;top:3%; width: 180px; height: 30px;"> 
+            <b>Add New Book</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "AdminBooks" %}"  title="Go to Admin Page">
+        <button id="nav" style=" right:68%;top:3%; width: 150px; height: 30px;"> 
+            <b>Admin Page</b>
+        </button>     
+    </a>
+
+    <a href="{% url "Home" %}"  title="Go to Home Page">
+        <button id="nav" style=" right:82%;top:3%; width: 150px; height: 30px;"> 
+            <b>BiblioBliss Home</b>
+        </button>     
+    </a>
+</nav>
+
+{% block navAdmin %}
+{% endblock navAdmin %}

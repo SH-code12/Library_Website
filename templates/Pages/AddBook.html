@@ -1,0 +1,121 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="nav.css">
+
+    <title>Add a Book to BiblioBliss</title>
+
+
+    <style>
+        h2{
+            font-size:2em ;
+            color: rgb(255, 255, 255);
+        }
+
+        button:hover{
+            transform: scale(1.05);
+        }
+
+    </style>
+
+
+
+</head>
+<body id = "stylebodyadd" style="background-image:url('{% static "Images/Final_back.jpg" %}'); 
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;background-position: center;
+    background-size:1000px;
+    display: flex;
+    background-color: rgb(66, 82, 134);
+    ">
+
+    {% include "navAdmin.html" %}
+
+    <section id="StyleAdd">
+        
+    <form action="{% url 'AddBooks' %}" method="post" id="addBookForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add New Book</h2>
+        <div class="addbook" name="new book">
+            {% comment %} <div name="newbook" class="attribute">
+                
+                <input id="id" type="text" name="bookId" required placeholder="Enter Book ID">
+            </div> {% endcomment %}
+            <div name="newbook" class="attribute">
+            
+
+                <input id="name" type="text" name="bookName" required placeholder="Enter Book Name">
+            </div>
+            <div name="newbook" class="attribute">
+                
+                <input id="author" type="text" name="author" required placeholder="Enter Book Author">
+            </div>
+        
+            <div name="newbook" class="attribute">
+                
+                <input id="Description" type="text" name="description" required placeholder="Enter Book Description">
+            </div>
+            <div name="newbook" class="attribute">
+                
+                <input id="image" type="file" name="image" required accept="image/*" placeholder="Upload Image">
+
+            </div>
+            <div name="newbookC" class="option">
+                Category
+                <select id="category" name="category"> <!-- Changed ID to "category" -->
+                    <option value="Programming">Programming</option>
+                    <option value="Trend">Trend</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Travel">Travel</option>
+                </select>
+            </div>
+            <div name="newbookstatus" class="option">
+                Status
+                <select id="status" name="status"> <!-- Ensure name="status" -->
+                    <option value="Borrow">Borrow</option>
+                    <option value="Borrowed">Borrowed</option>
+                    <option value="Marked">Marked</option>
+                    <option value="Read Only">Read Only</option>
+                    <option value="Not In Library">Not In Library</option>
+
+                </select>
+            </div> 
+            
+            <div name="newbook" class="option">
+                <button id="add" type="submit" value="Add Book">Add Book</button> 
+                <button id="reset" type="reset" value="Reset">Reset</button> 
+                
+            </div>
+        </div>
+
+    </form>
+
+    </section>
+
+
+    <script>
+        function showMessages() {
+            {% if messages %}
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            {% endif %}
+        }
+        window.onload = function() {
+            showMessages();
+        };
+    </script>
+
+
+
+</body>
+</html>

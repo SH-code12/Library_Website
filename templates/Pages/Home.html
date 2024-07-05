@@ -1,0 +1,82 @@
+﻿<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <link rel="stylesheet" href= "{% static "css/nav.css" %}">
+<head>
+    <meta charset="utf-8" />
+    <title>BiblioBliss Library</title>
+    <style>
+
+        button:hover{
+            transform: scale(1.05);
+        }
+
+    </style>
+
+</head>
+    <body style="background-color:white";>
+
+    
+        <nav >
+            <div style="height: 80px; width: 200px;">
+                <img src=" {% static "Images/Flogo.jpg" %}" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;">
+                <h2 style="margin-left: 50px; font-size: 35px; color: rgb(61, 42, 143); width: 440px;">Welcome to BiblioBliss</h2>
+            </div>
+
+
+            <a href="mailto:shahdelnassag@gmail.com" title="Contact  By Mail" >
+                <button style=" right:27%;top: 3%;" class="homebutton">
+                    <b >Contact</b>
+                </button>    
+            </a>
+
+            <a href="{% url  'Login'%}"  title="login">
+                <button  style=" right:15%;top:3%;" class="homebutton"> 
+                    <b>Log In</b>
+                </button>     
+            </a>
+
+            <a href="{% url "SignUp" %}" title="sign up">
+                <button style=" right:3%;top: 3%;" class="homebutton">
+                    <b >Sign Up</b>
+                </button>    
+            </a>
+        </nav>
+
+    <img style="margin-left: 0%;" src=" {% static "Images/HomePage.jpg" %}" alt="Sorry!"  height="590px"  width="1340px" class="imagee" />
+
+    <footer>
+        <div>
+            <ul>
+                <li>
+                    <a href="{% url "SignUp" %}" title="sign up">
+                        <b>Sign Up</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a href="{% url  'Login'%}"  title="login">
+                        <b>Log In</b>
+                    </a>
+                </li>
+            </ul>
+        </div>        <div>
+            <ul>
+                <li> 
+                    <a href="mailto:shahdelnassag@gmail.com" title="Contact  By Mail" >
+                        <b >Contact</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html> 
+

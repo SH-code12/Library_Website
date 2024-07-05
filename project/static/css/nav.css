@@ -1,0 +1,242 @@
+/* Eng:Shahd Elnassag ^_^  */
+
+/* navgation Bar Style for ViewBooks_Admin Page */
+
+
+#nav{
+    color: white;
+    background-color: rgb(162, 202, 202);
+    border-color: rgb(214, 202, 202);
+    position: fixed;
+    border-radius: 15px;
+    height: 30px;
+    width: 90px;
+    margin-top: 10px;
+}
+b{
+    font-size: 15px;
+} 
+#log {
+    display: none;
+    padding: 50px;
+    background-color: #faf9f7; 
+    position: absolute;
+    left: 600px;
+    top: 220px;
+}
+nav{
+    background-color:#fdfdfd;
+    position: fixed;
+    top: 0px;
+    left: 0%;
+    width: 100%; 
+    margin: 0px ;
+
+
+    
+}
+
+
+.cover {
+    display:inline;
+    flex-direction: row;
+    align-items: center;
+} 
+.cover img {
+    width: 150px;
+    height: auto;
+    margin-top: 60px;
+
+}
+.cover select {
+    margin-top: 10px;
+}
+.cover button {
+    margin-top: 10px;
+    
+}
+
+
+#addBook{
+    display:grid;
+    backdrop-filter: blur(20px); 
+    border: 2px solid rgb(247, 242, 242);
+    border-radius: 20px;
+    justify-content: center;
+    width: 350px;
+    height: 440px;
+    text-align:center;
+    align-items: center;
+    margin: -10;
+    padding: 0;
+    background-color: rgba(245, 242, 242, 0.223);
+
+}
+
+#addBookForm{
+    text-align:center;
+    background:none;
+    border-radius: 20px;
+    width: 350px;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(216, 210, 210);
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.223);
+    margin-top: 30px;
+
+}
+
+
+.attribute {
+    margin: 0px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    width: 310px;
+}
+.attribute input{
+    background: transparent;
+    width: 90%;
+    height: 25px;
+    border: none;
+    outline: none;
+}
+button:hover{
+    transform: scale(1.05);
+}
+h1{
+    display: inline;
+    text-align: left;
+    color:rgb(61, 42, 143);
+    text-decoration: solid underline rgb(61, 42, 143);
+    margin-bottom: 10px;
+}
+div a button {
+    background-color: rgb(238, 233, 233);
+    height: 25px;
+    border-radius: 10px; 
+    margin-left: 400px;
+    width: 150px;
+}
+
+#add,#reset , .option select{
+    background-color: rgb(162, 202, 202);
+    height: 25px;
+    width: 150px;
+
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+}
+.addbook {
+    display: inline;
+}
+.attribute {
+    margin-bottom: 20px;
+}
+div {
+    width: 350px;
+}
+#confirmation {
+    display: flex;
+    background-color: #dff0d8;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.admin{
+    margin-left: 500px;
+    top: 560px;
+}
+
+.admin input{
+    background-color: rgb(230, 214, 214);
+    height: 25px;
+    border-radius: 10px;
+
+}
+
+/* Style Details Page Delete Page */
+
+#show{
+    background-color: rgb(162, 202, 202);
+    height: 25px;
+    border-radius: 10px; 
+    border-color: rgb(214, 202, 202);
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+th, td {
+    border: 2px solid rgb(214, 202, 202);
+    padding: 8px;
+    text-align: left;
+    border-radius: 5px;
+}
+th {
+    background-color: rgb(162, 202, 202);
+}
+
+/* style of Home Page */
+.homebutton{
+    color: white;
+    background-color:rgb(162, 202, 202);
+    border-color: white;
+    position: fixed;
+    border-radius: 15px;
+    height: 30px;
+    width: 90px;
+}
+
+
+.book-container {
+    display:flex;
+    gap: 20px; 
+    
+    flex-wrap: wrap;
+
+}
+
+.book {
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.book-image {
+    width: 100%;
+    height: auto;
+}
+
+.book-details {
+    display: none;
+    max-width: 200px; /* Adjust as needed */
+    word-wrap: break-word;
+}
+
+.book:hover .book-details {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

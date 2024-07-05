@@ -1,0 +1,38 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Available Books In BiblioBliss</title>
+</head>
+
+<body>
+    {% include "navAdmin.html" %}
+    {% block nav %}
+    <div style="margin-top: 90px; margin-left: 45%">
+        <h1 id="text1" style="margin-top: 600px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Admin Page</h1>
+    </div>
+    <div style="margin-top: 30px; margin-left: 43%">
+        <h1 id="text2" style="margin-top: 5px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Available Books:</h1>
+    </div>
+    <div class="book-container">
+        {% for book in books %}
+        <div class="book">
+            <img src="{{ book.image.url }}" alt="{{ book.name }}" class="book-image">
+            <div class="book-details">
+                <h3>ID: {{book.id}}</h3>
+                <h3>Name: {{ book.name }}</h3>
+                <p>Author: {{ book.author }}</p>
+                <p>Category: {{ book.category }}</p>
+                <p>Status: {{ book.status }}</p>
+                <p>Description: {{ book.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% endblock nav %}
+</body>
+</html>

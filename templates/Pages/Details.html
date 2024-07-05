@@ -1,0 +1,73 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Details Books of BiblioBliss</title>
+    <link rel="stylesheet" href="Borrow.css">
+    <link rel="stylesheet" href="nav.css">
+
+</head>
+
+<body>
+
+    {% include "navAdmin.html" %}
+
+
+    <div style="margin-top: 80px; text-align: center;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190);">Display Books Details:</h1>
+    </div>
+
+
+    <div style="margin: 10px;">
+        <button id="show" onclick="displayBooksTable()">Show Table Content</button>
+    </div>
+
+    <table id="booksTable" style="display: none;">
+        <thead>
+            <tr>
+                <th>Image URL</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="booksTableBody">
+            {% for book in books %}
+            <tr>
+                <td>{{ book.image.url }}</td>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+
+    <script src="JavaScript.js"></script>
+
+    <script>
+        function displayBooksTable() {
+            var table = document.getElementById("booksTable");
+            if (table.style.display === "none") {
+                table.style.display = "table";
+            }
+            else {
+                table.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

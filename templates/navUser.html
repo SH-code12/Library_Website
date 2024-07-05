@@ -1,0 +1,42 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+<nav>
+    <div style="height: 80px;">
+        <img src="{% static 'Images/Flogo.jpg' %}" alt="Logo" style="width: 85px; margin-top: 15px; height: 65px;">
+    </div>
+    <a href="{% url 'SearchBooks' %}" title="Search For a Book">
+        <button id="nav" style="right:1%;top:3%; width: 200px; height: 30px;">
+            <b>Search For a Book</b>
+        </button>
+    </a>
+    <a href="{% url 'BorrowedBooks' %}" title="View Borrowed Books">
+        <button id="nav" style="right:18%;top:3%; width: 150px; height: 30px;">
+            <b>Borrowed Books</b>
+        </button>
+    </a>
+    <a href="{% url 'Borrow' %}" title="Borrow a Book">
+        <button id="nav" style="right:32%;top:3%; width: 150px; height: 30px;">
+            <b>Borrow</b>
+        </button>
+    </a>
+    <a href="{% url 'MarkBook' %}" title="Mark Book">
+        <button id="nav" style="right:46%;top:3%; width: 180px; height: 30px;">
+            <b>Mark a Book</b>
+        </button>
+    </a>
+    <a href="{% url 'UserBooks' %}" title="Go to User Page">
+        <button id="nav" style="right:63%;top:3%; width: 180px; height: 30px;">
+            <b>User Page</b>
+        </button>
+    </a>
+    <a href="{% url 'Home' %}" title="Go to Home Page">
+        <button id="nav" style="right:80%;top:3%; width: 150px; height: 30px;">
+            <b>BiblioBliss Home</b>
+        </button>
+    </a>
+</nav>
+
+{% block navUser %}
+{% endblock navUser %}

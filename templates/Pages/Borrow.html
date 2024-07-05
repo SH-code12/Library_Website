@@ -1,0 +1,87 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Borrow a BiblioBliss Book</title>
+
+</head>
+<body>
+
+    {% include "navUser.html" %}
+
+    <div style="margin-top: 80px; text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-top: 100px; color: #007bff; text-decoration: underline rgb(18, 113, 190); ">
+            Borrow a Book:</h1>
+    </div>
+
+    <div class="book-container" style="margin-top: 20px;">
+        {% for book in borrow_books %}
+            <div class="book">
+                <img src="{{ book.image.url }}" alt="{{ book.name }}" class="book-image">
+                <h3>ID: {{book.id}}</h3>
+                <h3>Name: {{ book.name }}</h3>
+                <button data-book-id="{{ book.id }}" class="borrow-button" style="background-color:rgb(162, 202, 202);border-radius: 20px;width: 80px;height: 30px;">
+                    Borrow
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% comment %} This line of code includes the jQuery library in your HTML document. 
+    jQuery is a fast, small, and feature-rich JavaScript library that simplifies various tasks such as HTML document traversal and manipulation,
+    event handling, animation, and AJAX interaction.
+
+    Including this script tag in your HTML document allows you to use jQuery syntax and functions in your JavaScript code.
+    In the context of your AJAX code for returning books, 
+    jQuery is used to handle DOM manipulation, 
+    event binding, 
+    and making AJAX requests in a more concise and cross-browser compatible manner. {% endcomment %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    
+    <script>
+        $(document).ready(function() {
+            $('.borrow-button').click(function() {
+                var bookId = $(this).data('book-id');
+                var csrftoken = getCookie('csrftoken'); // Get CSRF token from cookies
+    
+                $.ajax({
+                    url: '/Borrow/',
+                    method: 'POST',
+                    data: {
+                        'book_id': bookId,
+                        csrfmiddlewaretoken: csrftoken // Include CSRF token in data
+                    },
+                    success: function(response) {
+                        alert('Book Borrowed successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error borrowing book:', error);
+                        alert('Error borrowing book. Please try again.');
+                    }
+                });
+            });
+        });
+    
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Extract CSRF token from cookies
+                    if (cookie.startsWith('csrftoken=')) {
+                        cookieValue = cookie.substring('csrftoken='.length, cookie.length);
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+</body>
+</html>

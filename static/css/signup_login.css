@@ -1,0 +1,167 @@
+/* Eng:Shahd Elnassag ^_^  */
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('Images/Final_back.jpg')no-repeat;
+    background-position: center;
+    background-size:1000px;
+
+}
+
+#form_sign{
+display:grid;
+backdrop-filter: blur(20px); 
+border: 2px solid rgb(153, 135, 135);
+border-radius: 20px;
+justify-content: center;
+width: 350px;
+height: 440px;
+text-align:center;
+align-items: center;
+margin: -10;
+padding: 0;
+background-color: rgba(0, 0, 0, 0.223);
+
+}
+#form_cc{
+position: relative;
+text-align:center;
+background:none;
+height: 250px;
+border-radius: 20px;
+width: 350px;
+display:grid;
+align-items: center;
+justify-content: center;
+border: 2px solid rgb(153, 135, 135);
+backdrop-filter: blur(20px);
+background-color: rgba(0, 0, 0, 0.223);
+
+}
+#form_cc i,h2{
+color: rgb(255, 255, 255);
+}
+h2{
+font-size:2em ;
+}
+.input{
+margin: 0px;
+border-bottom: 2px solid rgb(255, 255, 255);
+width: 310px;
+}
+.input input{
+background: transparent;
+width: 90%;
+height: 25px;
+border: none;
+outline: none;
+}
+.logg{
+position:absolute;
+top: 470px;
+border-radius: 200px;
+border: none;
+outline: none;
+size: 50px;
+}
+
+#form_sign i{
+color: rgb(255, 255, 255);
+padding-right: 6px;
+}
+#form_sign label{
+color: rgb(255, 255, 255);
+}
+.log_s{
+top: 560px;
+left:43% ;
+}
+.log_s:hover{
+    transform: scale(1.05);
+
+}
+
+.log_s input{
+background-color: rgb(162, 202, 202);
+height: 30px;
+border-radius: 15px;
+width: 150px;
+margin-left: 10px;
+
+}
+
+/* style login Page */
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('Images/Final_back.jpg')no-repeat;
+    background-position: center;
+    background-size:1000px;
+}
+
+
+#form_cc i,h2{
+    color: rgb(255, 255, 255);
+}
+h2{
+    font-size:2em ;
+}
+.input{
+    margin: 0px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    width: 310px;
+}
+.input input{
+    background: transparent;
+    width: 90%;
+    height: 25px;
+    border: none;
+    outline: none;
+}
+.logg{
+    position:absolute;
+    top: 470px;
+    border-radius: 200px;
+    border: none;
+    outline: none;
+    size: 50px;
+    left: 43%;
+
+}
+
+#form_sign i{
+    color: rgb(255, 255, 255);
+    padding-right: 6px;
+}
+#form_sign label{
+color: rgb(255, 255, 255);
+}
+.log_s{
+    position:absolute;
+    top: 560px;
+    /* padding: 5; */
+}
+
+.logg  input{
+        background-color:rgb(162, 202, 202);
+        height: 30px;
+        border-radius: 15px;
+        width: 150px;
+    }
+
+    .logg  input:hover{
+        transform: scale(1.05);
+
+        
+    }
+
+    button:hover{
+        transform: scale(1.05);
+    }

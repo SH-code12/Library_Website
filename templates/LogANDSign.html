@@ -1,0 +1,37 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+
+<nav > 
+        
+    <div style="height: 80px;"><img src="{% static "Images/Flogo.jpg" %}" alt="Logo " style="width: 85px; margin-top: 15px;height: 65px;"></div>
+
+    <a href="mailto:shahdelnassag@gmail.com"  title="Contact By Mail">
+        <button id="nav" style=" right:53%;top:3%; width: 150px; height: 30px;"> 
+            <b>Contact</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "Home" %}"  title="Go to Home Page">
+        <button id="nav" style=" right:37%;top:3%; width: 150px; height: 30px;"> 
+            <b>Home</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "Login" %}"  title="Go to LogIn Page">
+        <button id="nav" style=" right:21%;top:3%; width: 150px; height: 30px;"> 
+            <b>Log In</b>
+        </button>     
+    </a> 
+
+    <a href="{% url "SignUp" %}"  title="Go to Sign Page">
+        <button id="nav" style=" right:5%;top:3%; width: 150px; height: 30px;"> 
+            <b>Sign UP</b>
+        </button>     
+    </a> 
+</nav>
+
+
+{% block logSign %}
+{% endblock logSign %}

@@ -1,0 +1,92 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search For Books</title>
+
+    <style>
+
+        div button,#click{
+            background-color: rgb(162, 202, 202);
+            height: 25px;
+            border-radius: 10px; 
+            width: 100px;
+            /* width: 100px; */
+        }
+        #searchQuery{
+            width: 175px;
+            height: 20px;
+            border-radius: 10px;
+            display: inline;
+
+        }
+        #title{
+            margin-bottom: 30px;
+            margin-top: 30px;
+            margin-left: 500px;
+        }
+
+        #searchResultContainer{
+            background-color: rgb(162, 202, 202);
+            border-radius: 30px;
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% include "navUser.html" %}
+
+    <div id="title">
+        <h1>Search For a Book</h1>
+    </div>
+
+    <form method="POST" action="{% url 'SearchBooks' %}">
+        {% csrf_token %}
+        <label for="searchQuery" style="font-size: 30px;">Search By:</label>
+        <input type="text" id="searchQuery" name="searchQuery" placeholder="Enter Title or Author">
+        <button  id = "click" type="submit">Search</button>
+    </form>
+
+    <div class="option" style="width: 500px; margin-top: 20px;">
+        <h2>Search By Category</h2>
+        <form method="POST" action="{% url 'SearchBooks' %}">
+            {% csrf_token %}
+            <select id="category" name="category">
+                <option value="">All Categories</option>
+                <option value="Programming">Programming</option>
+                <option value="Trend">Trend</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Travel">Travel</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if books %}
+    <div class="book-container">
+        {% for book in books %}
+            <div class="book">
+                <img src="{{ book.image.url }}" alt="{{ book.name }}" class="book-image">
+                <div class="book-details">
+                    <h3>ID: {{book.id}}</h3>
+                    <h3>Name: {{ book.name }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Category: {{ book.category }}</p>
+                    <p>Status: {{ book.status }}</p>
+                    <p>Description: {{ book.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+</body>
+</html>

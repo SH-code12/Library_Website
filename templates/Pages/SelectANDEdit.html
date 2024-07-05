@@ -1,0 +1,257 @@
+<!-- Eng:Shahd Elnassag ^_^ -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Books In BiblioBliss</title>
+
+    <style>
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size:1000px;
+            margin-top: 150px;
+            
+        }
+
+        #editForm{
+            text-align:center;
+            background:none;
+            border-radius: 20px;
+            width: 350px;
+            display:grid;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgb(238, 236, 236);
+            backdrop-filter: blur(20px);
+            background-color: rgba(24, 24, 26, 0.223);
+            margin-top: 35px;
+            margin-button: 500px;
+
+            
+        
+        }
+
+        .attribute {
+            margin: px;
+            border-bottom: 2px solid rgb(255, 255, 255);
+            width: 310px;
+            margin-top: 5px;
+            
+        }
+
+        .attribute input,input{
+            background: transparent;
+            width: 90%;
+            height: 25px;
+            border: none;
+            outline: none;
+        }
+
+        h1{
+            display: inline;
+            text-align: left;
+            color: black;
+            text-decoration: solid underline black;
+        }
+
+        #click{
+            background-color:  rgb(162, 202, 202);;
+            /* height: 25px; */
+            width: 150px;
+            text-align: center;
+            border-radius: 10px; 
+            margin: 10px;
+            display: inline;
+        }
+        /* #searchQuery{
+            width: 175px;
+            /* height: 20px; 
+            border-radius: 10px;
+
+        } */
+        #title{
+            margin-bottom: 30px;
+        }
+        form input{
+            width: 175px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        select{
+            width: 175px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            /* margin-top: 15px; */
+            background-color:  rgb(162, 202, 202);
+            justify-content: center;
+            
+
+
+        }
+        #edit{
+            /* margin-bottom: 10px; */
+            text-align: center;
+        }
+
+        h2{
+            font-size:2em ;
+            color: rgb(255, 255, 255);
+        }
+
+    </style>
+
+</head>
+<body "stylebodyadd" style="background-image:url('{% static "Images/Final_back.jpg" %}'); 
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;background-position: center;
+    background-size:1000px;
+    background-color:rgb(66, 82, 134);
+">
+    {% include "navAdmin.html" %}
+
+    <div id="Not found"></div>
+
+
+    <section>
+        <form id="editForm" method="POST">
+            {% csrf_token %}
+            <h2>Edit Book</h2>
+    
+            <div>
+                <input type="number" id="editIdInput" placeholder="Enter Book ID">
+                <button class="select-button" id="click" type="button" name="select">
+                    Select Book
+                </button>
+            </div>
+    
+            <div class="attribute">
+                <label for="editId" class="label">ID</label>
+                <input type="number" id="editId" placeholder="Enter ID" name="selectbyid" readonly>
+            </div>
+    
+            <div class="attribute">
+                <label for="editName" class="label">Name</label>
+                <input type="text" id="editName" placeholder="Edit Name" name="bookName">
+            </div>
+    
+            <div class="attribute">
+                <label for="editAuthor" class="label">Author</label>
+                <input type="text" id="editAuthor" placeholder="Edit Author" name="author">
+            </div>
+    
+            <div class="attribute">
+                <label for="editDescription" class="label">Description</label>
+                <input type="text" id="editDescription" name="description" placeholder="Edit Description">
+            </div>
+            
+            <div class="attribute">
+                <label for="image" class="label">Image</label>
+                <input id="image" type="file" name="image" required accept="image/*" placeholder="Upload Image">
+            </div>
+    
+            <div class="attribute">
+                <label for="category" class="label">Category</label>
+                <select id="category" name="category">
+                    <option value="Programming">Programming</option>
+                    <option value="Trend">Trend</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Travel">Travel</option>
+                </select>
+            </div>
+    
+            <div class="attribute">
+                <label for="editStatus" class="label">Status</label>
+                <select id="editStatus" name="status">
+                    <option value="Borrow">Borrow</option>
+                    <option value="Borrowed">Borrowed</option>
+                    <option value="Marked">Marked</option>
+                    <option value="Read Only">Read Only</option>
+                    <option value="Not In Library">Not In Library</option>
+
+                </select>
+            </div>
+    
+            <button class="save-button" id="click" type="submit" name="save">
+                Save Changes
+            </button>
+            <button id="click" type="reset" style="display:flexbox;">Clear Form</button>
+        </form>
+        </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.select-button').click(function() {
+            var bookId = $('#editIdInput').val();
+            $.ajax({
+                url: '/EditBooks/',  
+                method: 'GET',
+                data: {
+                    'book_id': bookId
+                },
+                success: function(response) {
+                    $('#editId').val(response.id);
+                    $('#editName').val(response.name);
+                    $('#editAuthor').val(response.author);
+                    $('#editDescription').val(response.description);
+                    $('#category').val(response.category);
+                    $('#editStatus').val(response.status);
+
+                },
+                error: function(xhr, status, error) {
+                    alert('Error fetching book details. Please try again.');
+                }
+            });
+        });
+
+        $('.save-button').click(function() {
+            var formData = new FormData($('#editForm')[0]);
+            var csrftoken = getCookie('csrftoken'); 
+            $.ajax({
+                url: '/EditBooks/',  
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert('Book Edited successfully!'); 
+                },
+                error: function(xhr, status, error) {
+                    alert('Error updating book details. Please try again.');
+                }
+            });
+        });
+    });
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Extract CSRF token from cookies
+                if (cookie.startsWith('csrftoken=')) {
+                    cookieValue = cookie.substring('csrftoken='.length, cookie.length);
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script> 
+
+</body>
+</html>
