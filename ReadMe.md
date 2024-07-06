@@ -63,7 +63,7 @@ We welcome contributions! To contribute to the Django Blog Application, follow t
 
 Email: shahdelnassag@gmail.com
 
-GitHub: [Shahd Elnassag](#https://github.com/SH-code12)
+GitHub:https://github.com/SH-code12
 
 
 
